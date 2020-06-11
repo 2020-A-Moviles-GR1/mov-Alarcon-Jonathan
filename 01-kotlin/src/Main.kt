@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.*
 
 fun main(args:Array<String>){
@@ -64,3 +65,8 @@ fun imprimirMensaje(){ //unit = void
     println("Funcion")
 }
 
+=======
+fun main(args:Array<String>){
+    print("Hola")
+}
+>>>>>>> desarrollo
