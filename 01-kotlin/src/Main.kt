@@ -1,7 +1,7 @@
 import java.util.*
 
 fun main(args:Array<String>){
-    println("Hola ")
+    println("Hola esto es una prueba ")
     //Mutables
     var edadProfesor = 31 //No especificamos el tipo de dato
                           // ; No especificamos el punto y coma
