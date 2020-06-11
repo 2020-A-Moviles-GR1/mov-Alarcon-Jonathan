@@ -1,7 +1,7 @@
 import java.util.*
 
 fun main(args:Array<String>){
-    print("Hola")
+    println("Hola")
     //Mutables
     var edadProfesor = 31 //No especificamos el tipo de dato
                           // ; No especificamos el punto y coma
@@ -25,7 +25,7 @@ fun main(args:Array<String>){
 
     //
     when(sueldo){
-        12.20 -> println("Sueldo normal")
+        12.20 -> println("Sueldo normal, comprobado")
         -12.20 -> println("Sueldo normal")
         else -> println("No se reconoce el sueldo")
     }
