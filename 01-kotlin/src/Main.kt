@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 import java.util.*
 
 fun main(args:Array<String>){
-    println("Hola esto es una prueba")
+    println("Hola ")
     //Mutables
     var edadProfesor = 31 //No especificamos el tipo de dato
                           // ; No especificamos el punto y coma
@@ -65,8 +64,4 @@ fun imprimirMensaje(){ //unit = void
     println("Funcion")
 }
 
-=======
-fun main(args:Array<String>){
-    print("Hola")
-}
->>>>>>> desarrollo
+
