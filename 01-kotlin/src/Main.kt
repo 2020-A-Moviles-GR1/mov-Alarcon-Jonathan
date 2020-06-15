@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun main(args:Array<String>){
     println("Hola esto es una prueba ")
@@ -41,7 +42,66 @@ fun main(args:Array<String>){
 
     calcularSueldo1(1250.00, 18.00, null)
     calcularSueldo1(1250.00, 18.00)
-    
+
+    val arregloConstante: Array<Int> = arrayOf(1,2,3) //array para datos que no van a modificarse (no eliminar, no aumentar)
+    val arregloNoConstante: ArrayList<Int> = arrayListOf(15,31,32) // en este tipo de array si se puede modificar
+    print(arregloNoConstante)
+    arregloNoConstante.add(50)
+    print(arregloNoConstante)
+    //arregloNoConstante.remove(30)
+    arregloNoConstante.remove(30) //el element no tenemos que escribir nosotros
+    print(arregloNoConstante)
+
+    //val arregloDou: Array<Double> = arrayOf(45.36,27.8)
+    //val arregloLetras: Array<String> = arrayOf("Marco", "Luis", "Pedro")
+    //println(arregloDou)
+    //println(arregloLetras)
+
+    //para imprimir un arreglo
+    arregloNoConstante.forEach {
+        println("Valor de la iteración " + it)
+    }
+    //segunda forma para imprimir un arreglo
+    arregloNoConstante
+            .forEach { valorIteracion: Int ->
+            println("Valor iteracion: " + valorIteracion)
+        }
+
+    arregloNoConstante
+            .forEachIndexed { index:Int, it:Int ->
+                println("Valor de la iteracion " + it)
+            }
+    //OPERADORES  -> TENEMOS EN TODOS LOS LENGUAJES
+
+    //Map
+    //Mutar o modificar el arreglo
+    val respuestaMap = arregloNoConstante
+            .map { iterador: Int ->
+                iterador * -1
+            }
+    println(respuestaMap)
+    println(arregloNoConstante)
+
+    val respuestaMapDos: List<Int> = arregloNoConstante
+            .map { iterador: Int ->
+                val nuevoValor = iterador * -1
+                val otroValor = nuevoValor * 2
+                return@map otroValor
+            }
+    println(respuestaMap)
+    println(respuestaMapDos)
+    println(arregloNoConstante)
+
+    val respuestaFilter = arregloNoConstante
+            .filter {
+                iteracion: Int ->
+                val esMayorA23 = iteracion > 23
+                return@filter esMayorA23
+            }
+    println(respuestaFilter)
+    println(arregloNoConstante)
+
+
 }
 
 fun calcularSueldo( sueldo: Double, tasa: Double = 12.00): Int {
