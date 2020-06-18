@@ -44,7 +44,9 @@ fun main(args:Array<String>){
     calcularSueldo1(1250.00, 18.00)
 
     val arregloConstante: Array<Int> = arrayOf(1,2,3) //array para datos que no van a modificarse (no eliminar, no aumentar)
-    val arregloNoConstante: ArrayList<Int> = arrayListOf(15,31,32) // en este tipo de array si se puede modificar
+    val arregloNoConstante: ArrayList<Int> = arrayListOf(15,31,32,23,25,30) // en este tipo de array si se puede modificar
+    println(arregloConstante)
+    println("Este es el arreglo Constante")
     print(arregloNoConstante)
     arregloNoConstante.add(50)
     print(arregloNoConstante)
@@ -98,9 +100,80 @@ fun main(args:Array<String>){
                 val esMayorA23 = iteracion > 23
                 return@filter esMayorA23
             }
+    println("Respuesta del filter")
     println(respuestaFilter)
     println(arregloNoConstante)
 
+
+    //Clase 18/06/2020
+    //Any -> or
+    //All -> and
+    // AND -> TRUE, Todo lo demas falso
+    //  OR -> TODO es falso, lo demas es verdadero
+
+    //1) devolver una expresion (TRUE OR FALSE)
+    //2) devuelve un booleano
+
+    //(15,31,32,23,25,30)
+
+    val respuestaAny: Boolean = arregloNoConstante.any{
+        iterador: Int ->
+        return@any iterador < 20
+    }
+
+    println(respuestaAny)
+
+    val respuestaAll = arregloNoConstante.all{
+        iterador: Int ->
+        return@all iterador > 18
+    }
+    println(respuestaAll)
+
+    // Reduce (devuelve numeros)
+    // 1) devuelve el acumulado
+    // 2) Tenemos que decirle en que valor empieza
+    // 3) el acumulador siempre empieza en 0
+    // 4) podemos trabajar con cualquier operacion 
+    //Este operador nos permite hacer cualquier tipo de operacion
+    //Ejemplo: Promedio
+    //iteracion son nuestros valores
+    //acumulador siempre empieza en 0
+    /*val respuestaReduce = arregloNoConstante
+            .reduce{ acumulador, iteracion ->
+                return@reduce
+            }
+    */
+
+    val respuestaReduce = arregloNoConstante
+            .reduce{ acumulador, iteracion ->
+                return@reduce acumulador + iteracion
+            }
+    println("Esta es la respuesta del operador reduce")
+    println(respuestaReduce)
+    println(arregloNoConstante)
+    
+    // operador para que el acumulador no empiece desde cero
+    val respuestaFold: Int = arregloNoConstante
+            .fold (
+                    100,
+                    { acumulador, iteracion ->
+                        println(acumulador)
+                        return@fold acumulador - iteracion
+                    }
+            )               
+    println("Esta es la respuesta del operador fold")
+    println(respuestaFold)
+
+    //arregloNoConstante.foldRight
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
 
