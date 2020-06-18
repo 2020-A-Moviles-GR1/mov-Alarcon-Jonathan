@@ -165,9 +165,61 @@ fun main(args:Array<String>){
     println(respuestaFold)
 
     //arregloNoConstante.foldRight
+
+
+    // Reducir el daño en 20%
+    // menores a 18 ataques no nos hace daño
+    println("Aqui comienza la vida actual")
+    val vidaActual: Double = arregloNoConstante
+            .map { it * 0.8 }
+            .filter { it > 20 }
+            .fold(
+                    100.00,
+                    { acumulador, dato ->
+                        println(acumulador)
+                        return@fold acumulador - dato }
+            )
+    println("Esta es la respuesta de la vida actual")
+    println(vidaActual)
     
-    
-    
+    //CLASES ABSTRACTAS
+    //podemos crear clases que se deriven de estas clases
+    abstract class NumerosJava{  // val nuevosNumeros = Numeros(1,2)
+        protected val numeroUno:Int
+        private val numeroDos:Int
+        constructor(uno:Int, dos:Int){
+            numeroUno = uno
+            numeroDos = dos
+        }
+    }
+    //la clase abstracta se puede heredar
+    abstract class Numeros( // val nuevosNumeros = Numeros(1,2)
+            protected val numeroUno:Int,
+            protected val numeroDos:Int
+    ){
+
+    }
+
+    class Suma(
+            uno: Int,
+            dos: Int
+    ) : Numeros(uno, dos) {
+        fun sumar():Int{
+            // this.uno
+            return this.numeroUno + this.numeroDos
+        }
+    }
+
+    class SumaDos(
+            public var uno: Int,
+            public var dos: Int
+    ) : Numeros(uno, dos) {
+        fun sumar():Int{
+            this.uno
+            this.dos
+            return this.numeroUno + this.numeroDos
+        }
+    }
     
     
     
