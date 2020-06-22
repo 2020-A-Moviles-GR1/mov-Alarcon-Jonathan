@@ -182,46 +182,28 @@ fun main(args:Array<String>){
     println("Esta es la respuesta de la vida actual")
     println(vidaActual)
     
-    //CLASES ABSTRACTAS
-    //podemos crear clases que se deriven de estas clases
-    abstract class NumerosJava{  // val nuevosNumeros = Numeros(1,2)
-        protected val numeroUno:Int
-        private val numeroDos:Int
-        constructor(uno:Int, dos:Int){
-            numeroUno = uno
-            numeroDos = dos
-        }
-    }
-    //la clase abstracta se puede heredar
-    abstract class Numeros( // val nuevosNumeros = Numeros(1,2)
-            protected val numeroUno:Int,
-            protected val numeroDos:Int
-    ){
+    val nuevoNumeroUno = sumarDosNumerosDos(1,1)
+    val nuevoNumeroDos = sumarDosNumerosDos(null,1)
+    val nuevoNumeroTres = sumarDosNumerosDos(1,null)
+    val nuevoNumeroCuatro = sumarDosNumerosDos(null,null)
 
-    }
+    println(sumarDosNumerosDos.arregloNumeros)
+    sumarDosNumerosDos.agregarNumero(254)
+    println(sumarDosNumerosDos.arregloNumeros)
+    sumarDosNumerosDos.eliminarNumero(1)
+    println(sumarDosNumerosDos.arregloNumeros)
 
-    class Suma(
-            uno: Int,
-            dos: Int
-    ) : Numeros(uno, dos) {
-        fun sumar():Int{
-            // this.uno
-            return this.numeroUno + this.numeroDos
-        }
-    }
 
-    class SumaDos(
-            public var uno: Int,
-            public var dos: Int
-    ) : Numeros(uno, dos) {
-        fun sumar():Int{
-            this.uno
-            this.dos
-            return this.numeroUno + this.numeroDos
-        }
-    }
-    
-    
+
+    //errores
+    val nombre: String? = null
+    nombre = "Jonathan"
+    println(nombre.length)
+    //if (nombre != null){
+      //  println(nombre.length)
+    //}
+
+    //si esque existe el nombre devuelves la longitud
     
     
     
@@ -249,4 +231,84 @@ fun imprimirMensaje(){ //unit = void
     println("Funcion")
 }
 
+//CLASES ABSTRACTAS
+//podemos crear clases que se deriven de estas clases
+abstract class NumerosJava{  // val nuevosNumeros = Numeros(1,2)
+    protected val numeroUno:Int
+    private val numeroDos:Int
+    constructor(uno:Int, dos:Int){
+        numeroUno = uno
+        numeroDos = dos
+    }
+}
+//la clase abstracta se puede heredar
+abstract class Numeros( // val nuevosNumeros = Numeros(1,2)
+        protected var numeroUno:Int,
+        protected var numeroDos:Int
+){
 
+}
+
+class Suma(
+        uno: Int,
+        dos: Int
+) : Numeros(uno, dos) {
+    fun sumar():Int{
+        // this.uno
+        return this.numeroUno + this.numeroDos
+    }
+}
+
+class SumaDos(
+        public var uno: Int,
+        public var dos: Int
+) : Numeros(uno, dos) {
+    fun sumar():Int{
+        this.uno
+        this.dos
+        return this.numeroUno + this.numeroDos
+    }
+}
+
+class sumarDosNumerosDos(
+       uno: Int,
+       dos: Int
+) : Numeros(uno, dos){
+    //pedazo de codigo especial de kotlin
+
+    init {
+        println("Hola INIT") //siempre se ejecuta este bloque de codigo
+    }
+
+    constructor(uno: Int?, dos: Int): this(if (uno == null) 0 else uno, dos){
+        println("Hola 1")
+    }
+    constructor(uno: Int, dos: Int?): this( uno, if (dos == null) 0 else dos){
+        println("Hola 2")
+    }
+    constructor(uno: Int?, dos: Int?): this(
+            if (uno == null) 0 else uno,
+            if (dos == null) 0 else dos
+        )
+     {
+        println("Hola 3")
+     }
+
+
+
+    //propiedad estatica o metodos estaticos
+    companion object{
+        val arregloNumeros = arrayListOf(1,2,3,4)
+
+        fun agregarNumero(nuevoNumero:Int){
+            this.arregloNumeros.add(nuevoNumero)
+        }
+
+        fun eliminarNumero(posicionNumero:Int){
+            this.arregloNumeros.removeAt(posicionNumero)
+        }
+    }
+
+
+
+}
