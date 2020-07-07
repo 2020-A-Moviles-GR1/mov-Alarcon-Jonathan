@@ -18,9 +18,11 @@ fun main(args:Array<String>) {
                 Farmacia().crearFarmacia()
             }
             2 -> {
-                println("Ingrese el nombre de la farmacia que desea buscar o ingrese todas para mostrar todas las farmacias")
+                print("Ingrese el nombre de la farmacia que desea buscar o ingrese todas para mostrar todas las farmacias: ")
                 val opcion = readLine().toString()
+                //Farmacia().buscarFarmacia(opcion)
                 Farmacia().buscarFarmacia(opcion)
+
             }
         }
 

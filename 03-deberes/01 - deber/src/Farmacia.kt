@@ -3,7 +3,7 @@ import java.io.*
 
 class Farmacia {
 
-    //var listaMutable = mutableListOf<String>()
+    var listaMutable = mutableListOf<String>()
     //var listaMutable = arrayListOf<String>()
 
     fun crearFarmacia(){
@@ -56,7 +56,120 @@ class Farmacia {
         //println("Se pudo escribir en el archivo")
     }
 
-    fun buscarFarmacia(nombreFarmacia: String = "todas"){
+    fun lectura():List<String>{
+
+
+        val archivo = File("archivos//farmacia.txt")
+        val bufferedReader = archivo.bufferedReader()
+        val text:List<String> = bufferedReader.readLines()
+        var output = ""
+        text.forEachIndexed { index, it -> output = it + (if(index < text.size-2) "\n" else "") }
+        //parsearFarm(text)
+        //buscarFarmacia(text)
+        return text
+    }
+
+    fun prueba(): List<String>{
+        val arreglo: ArrayList<String> = arrayListOf()
+        var numeroLineas = 0
+        val archivo = File("archivos//farmacia.txt")
+        val bufferedReader = archivo.bufferedReader()
+        while (bufferedReader.readLine()!= null){
+            val lectura = bufferedReader.readText()
+            //print(lectura)
+            arreglo.add(lectura)
+            numeroLineas += 1
+        }
+        //print(numeroLineas)
+        //print(arreglo)
+        parsearFarm(arreglo)
+        return arreglo
+    }
+
+
+
+    /*fun leer():ArrayList<String> {
+        val archivo: File = File("archivos//farmacia.txt")
+        val buffReader: BufferedReader = archivo.bufferedReader()
+        val inp: String = buffReader.use { it.readText() }
+        var arregloDeStrings:ArrayList<String> = inp.split("\n").toTypedArray().toCollection(ArrayList());
+        println("arreglooooo 1 : " + arregloDeStrings.size.toString())
+        arregloDeStrings.removeAt(arregloDeStrings.size - 1)
+        println("arreglooooo 2 : " + arregloDeStrings.size.toString())
+        //println(inp);
+        //println("lista de strings: \n")
+
+        return  arregloDeStrings;
+    }*/
+
+    fun parsearFarm(arregloDeStrings: List<String>) :ArrayList<AtributosFar>{
+        var farmacias: ArrayList<AtributosFar> = arrayListOf()
+        var arreglo2: Array<String> = arrayOf()
+        arregloDeStrings.forEach { valor ->
+            //var arregloDatosEnString: Array<String> = arrayOf()
+            arreglo2 = valor.split(",").toTypedArray()
+
+            //println("Imprimir arreglo separado de comas")
+            arreglo2.forEach { v -> println(v) }
+            farmacias.add(AtributosFar(
+                    arreglo2[0].toInt(),
+                    arreglo2[1],
+                    arreglo2[2],
+                    arreglo2[3].toInt(),
+                    arreglo2[4].toFloat(),
+                    arreglo2[5].toBoolean()
+            )
+            )
+        }
+        //listaMutable.add(farmacias.toString())
+        print(farmacias[0])
+        print("Ahora va la lista mutable")
+        //print(listaMutable[1])
+        return farmacias
+    }
+
+    fun buscarFarmacia(nombreABuscar: String = "todas"){
+        val elementos: List<String> = lectura()
+        var farmacias: ArrayList<AtributosFar> = arrayListOf()
+        var arreglo2: Array<String> = arrayOf()
+        if (nombreABuscar.equals("todas")){
+            elementos.forEach { valor ->
+                arreglo2 = valor.split(",").toTypedArray()
+
+                //println("Imprimir arreglo separado de comas")
+                arreglo2.forEach { v -> println(v) }
+                farmacias.add(AtributosFar(
+                        arreglo2[0].toInt(),
+                        arreglo2[1],
+                        arreglo2[2],
+                        arreglo2[3].toInt(),
+                        arreglo2[4].toFloat(),
+                        arreglo2[5].toBoolean()
+                )
+                )
+            }
+            print(farmacias)
+        }else if(!nombreABuscar.equals("todas")) {
+            elementos.forEach { valor ->
+                arreglo2 = valor.split(",").toTypedArray()
+                if (arreglo2[1].equals(nombreABuscar)) {
+                    println(valor)
+                }
+            }
+        }else {
+            print("La farmacia no existe")
+        }
+
+    }
+
+
+
+
+
+
+
+
+    /*fun buscarFarmacia(nombreFarmacia: String = "todas"){
         val arregloMuteable = mutableListOf<String>()
         val archivo: File = File("archivos//farmacia.txt")
         val ingreso = FileInputStream(archivo)
@@ -89,6 +202,6 @@ class Farmacia {
             //out.write("$datos")
         //}
 
-    }
+    }*/
 
 }
