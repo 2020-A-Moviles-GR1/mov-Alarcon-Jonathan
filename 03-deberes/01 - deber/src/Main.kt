@@ -1,10 +1,6 @@
 
 fun main(args:Array<String>) {
-    //println("Hola esto es una prueba ")
-    //var numeroPrueba = 5
-    //println(numeroPrueba)
-    //numeroPrueba = 10
-    //println(numeroPrueba)
+
     fun menu(){
         println("¿Qué desea gestionar?")
         println("1. Farmacia")
@@ -15,20 +11,18 @@ fun main(args:Array<String>) {
         when (eleccion){
             1 -> {
                 println("BIENVENIDO, PUEDE CREAR UNA FARMACIA");
-                Farmacia().crearFarmacia()
+                Farmacia().menuFarmacia()
             }
             2 -> {
-                print("Ingrese el nombre de la farmacia que desea buscar o ingrese todas para mostrar todas las farmacias: ")
-                val opcion = readLine().toString()
-                //Farmacia().buscarFarmacia(opcion)
-                Farmacia().buscarFarmacia(opcion)
+
+            }
+            3 -> {
 
             }
         }
-
     }
     menu()
-    //Farmacia().crearFarmacia()
+
 }
 
 
