@@ -1,1 +1,3 @@
 10,Patito,america,154,0.02,false
+5,medical,bozandes,456,0.02,false
+8,medical2,aires,852,0.03,false

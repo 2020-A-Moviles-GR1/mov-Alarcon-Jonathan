@@ -20,7 +20,7 @@ fun main(args:Array<String>) {
             2 -> {
                 println("Ingrese el nombre de la farmacia que desea buscar o ingrese todas para mostrar todas las farmacias")
                 val opcion = readLine().toString()
-                Farmacia().
+                Farmacia().buscarFarmacia(opcion)
             }
         }
 

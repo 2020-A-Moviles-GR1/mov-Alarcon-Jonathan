@@ -1,5 +1,5 @@
 import java.io.*
-import kotlin.collections.ArrayList
+
 
 class Farmacia {
 
@@ -56,7 +56,38 @@ class Farmacia {
         //println("Se pudo escribir en el archivo")
     }
 
-    fun buscarFarmacia(){
+    fun buscarFarmacia(nombreFarmacia: String = "todas"){
+        val arregloMuteable = mutableListOf<String>()
+        val archivo: File = File("archivos//farmacia.txt")
+        val ingreso = FileInputStream(archivo)
+        val datos = archivo.bufferedReader()
+        when (nombreFarmacia){
+            "todas" -> {
+                datos.useLines { itera -> itera.forEach { arregloMuteable.add(it) } }
+                var contador = 0
+                arregloMuteable.forEach { valorIteracion: String ->
+                    contador = contador + 1
+                    println("Farmacia $contador: "+ valorIteracion)
+                } //fin del foreach
+            } //fin de "todas"
+            else ->{
+                datos.useLines { itera -> itera.forEach { arregloMuteable.add(it) } }
+                arregloMuteable.forEach{ iteracion: ArrayList ->
+                    if (iteracion[1] == nombreFarmacia) {
+                        val respuesta = iteracion
+                        print(respuesta)
+                    }else{
+                        print("No existe la farmacia")
+                    }
+
+                }
+            }// fin else
+        } // fin when
+
+        //print(arregloMuteable)
+        //ingreso.bufferedWriter().use { out ->
+            //out.write("$datos")
+        //}
 
     }
 
