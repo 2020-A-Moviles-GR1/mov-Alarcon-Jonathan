@@ -197,7 +197,7 @@ fun main(args:Array<String>){
 
     //errores
     // Elvis Operator 
-    val nombre: String? = null
+    var nombre: String? = null
     nombre = "Jonathan"
     println(nombre.length)
     //if (nombre != null){
