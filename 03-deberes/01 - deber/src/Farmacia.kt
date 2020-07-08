@@ -62,14 +62,17 @@ class Farmacia {
         ingreso.bufferedWriter().use { out ->
             out.write("$datos")
         }
+        println("****************** ¿DESEA CREAR UN MEDICAMENTO PARA ESTA FARMACIA? ************************")
+        println("Digite Si - No : ")
+        val crearMed = readLine().toString()
+        if (crearMed == "Si"){
+            Medicamento().crearMedicamento(nombreFarmacia)
+        } else{
+            println("La Farmacia fue creada con éxito")
+        }
 
-        /*listaMutable.forEach { valorIteracion: String ->
-            println("Valor interacion: "+valorIteracion)
-        }*/
-        //print(listaMutable[1])
-        //guardarFarmacia(listaMutable)
-        //ArrayList<String>
     }
+
     fun guardarFarmacia( farmacia: MutableList<String> ){
 
         val archivo: File = File("archivos//farmacia.txt")
@@ -99,7 +102,7 @@ class Farmacia {
         val text:List<String> = bufferedReader.readLines()
         var output = ""
         text.forEachIndexed { index, it -> output = it + (if(index < text.size-2) "\n" else "") }
-        parsearFarm(text)
+        obtenerFarmacias(text)
         //buscarFarmacia(text)
         return text
     }
@@ -137,7 +140,7 @@ class Farmacia {
         return  arregloDeStrings;
     }*/
 
-    fun parsearFarm(elementos: List<String>) :ArrayList<AtributosFar>{
+    fun obtenerFarmacias(elementos: List<String>) :ArrayList<AtributosFar>{
         //val elementos: List<String> = lectura()
         var farmacias: ArrayList<AtributosFar> = arrayListOf()
         var arregloParse: Array<String> = arrayOf()
@@ -175,7 +178,7 @@ class Farmacia {
 
     fun buscarFarmacia(nombreABuscar: String = "todas"){
         val elementos: List<String> = lectura()
-        var farmacias: ArrayList<AtributosFar> = arrayListOf()
+        var farmacias: ArrayList<AtributosFar> = obtenerFarmacias(elementos)
         var arreglo2: Array<String> = arrayOf()
         if (nombreABuscar.equals("todas")){
             elementos.forEach { valor ->
@@ -215,7 +218,7 @@ class Farmacia {
 
     fun actualizarFarmacia(nombreABuscar: String){
         val elementos: List<String> = lectura()
-        val farmacias: ArrayList<AtributosFar> = parsearFarm(elementos)
+        val farmacias: ArrayList<AtributosFar> = obtenerFarmacias(elementos)
         //var arreglo2: Array<String> = arrayOf()
         farmacias.forEachIndexed { index, atributosFar ->
             if (farmacias[index].nombreFarmacia.equals(nombreABuscar)){
@@ -277,7 +280,7 @@ class Farmacia {
     fun eliminarFarmacia(nombreEliminar: String){
         var indice: Int = 0
         val elementos: List<String> = lectura()
-        val farmacias: ArrayList<AtributosFar> = parsearFarm(elementos)
+        val farmacias: ArrayList<AtributosFar> = obtenerFarmacias(elementos)
         farmacias.forEachIndexed { index, atributosFar ->
             if (farmacias[index].nombreFarmacia.equals(nombreEliminar)){
                 //print(index)

@@ -1,3 +1,4 @@
+import kotlin.system.exitProcess
 
 fun main(args:Array<String>) {
 
@@ -14,10 +15,11 @@ fun main(args:Array<String>) {
                 Farmacia().menuFarmacia()
             }
             2 -> {
-
+                println("BIENVENIDO, PUEDE CREAR UN MEDICAMENTO");
+                Medicamento().menuMedicamento()
             }
             3 -> {
-
+                exitProcess(2)
             }
         }
     }
