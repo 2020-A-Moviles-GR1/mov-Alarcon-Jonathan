@@ -1,3 +1,2 @@
 2,Farmacia Economica,America,154,0.05,false
-3,Farmacia1,Naciones Unidas,125,0.21,false
 4,Farm Lab,Portugal y 6 de Diciembre,130,0.31,false

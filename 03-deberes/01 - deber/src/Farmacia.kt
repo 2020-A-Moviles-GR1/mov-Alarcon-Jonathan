@@ -32,6 +32,7 @@ class Farmacia {
                 print("Ingrese el nombre de la farmacia que desea eliminar: ")
                 val opcion = readLine().toString()
                 eliminarFarmacia(opcion)
+                Medicamento().eliminarMedicamento(opcion)
             }
             5 -> {
                 exitProcess(1)
@@ -73,26 +74,7 @@ class Farmacia {
 
     }
 
-    fun guardarFarmacia( farmacia: MutableList<String> ){
 
-        val archivo: File = File("archivos//farmacia.txt")
-        val ingreso = FileOutputStream(archivo,true)
-        //ingreso.bufferedWriter().newLine();
-        //ingreso.bufferedWriter().write("Que deseas Jonathan?");
-        //ingreso.close();
-        //FileOutputStream(archivo,true).bufferedWriter().newLine()
-        //FileOutputStream(archivo,true).bufferedWriter().write("Que deseas Jonathan?")
-        //FileOutputStream(archivo,true).bufferedWriter().close()
-        //use { out -> "Hola mundo, soy Jonathan".toByteArray() }
-        //ESTA PARTE SI VALE
-        /*ingreso.bufferedWriter().use { out ->
-            farmacia.forEach { valorIteracion : String -> out.write("$valorIteracion[0], $valorIteracion[1], $valorIteracion[2], $valorIteracion[3], $valorIteracion[4], $valorIteracion[5] \n") }
-        }*/
-        //val =
-
-            //
-        //println("Se pudo escribir en el archivo")
-    }
 
     fun lectura():List<String>{
 
@@ -103,42 +85,10 @@ class Farmacia {
         var output = ""
         text.forEachIndexed { index, it -> output = it + (if(index < text.size-2) "\n" else "") }
         obtenerFarmacias(text)
-        //buscarFarmacia(text)
+
         return text
     }
 
-    fun prueba(): List<String>{
-        val arreglo: ArrayList<String> = arrayListOf()
-        var numeroLineas = 0
-        val archivo = File("archivos//farmacia.txt")
-        val bufferedReader = archivo.bufferedReader()
-        while (bufferedReader.readLine()!= null){
-            val lectura = bufferedReader.readText()
-            //print(lectura)
-            arreglo.add(lectura)
-            numeroLineas += 1
-        }
-        //print(numeroLineas)
-        //print(arreglo)
-        //parsearFarm(arreglo)
-        return arreglo
-    }
-
-
-
-    /*fun leer():ArrayList<String> {
-        val archivo: File = File("archivos//farmacia.txt")
-        val buffReader: BufferedReader = archivo.bufferedReader()
-        val inp: String = buffReader.use { it.readText() }
-        var arregloDeStrings:ArrayList<String> = inp.split("\n").toTypedArray().toCollection(ArrayList());
-        println("arreglooooo 1 : " + arregloDeStrings.size.toString())
-        arregloDeStrings.removeAt(arregloDeStrings.size - 1)
-        println("arreglooooo 2 : " + arregloDeStrings.size.toString())
-        //println(inp);
-        //println("lista de strings: \n")
-
-        return  arregloDeStrings;
-    }*/
 
     fun obtenerFarmacias(elementos: List<String>) :ArrayList<AtributosFar>{
         //val elementos: List<String> = lectura()
@@ -146,9 +96,6 @@ class Farmacia {
         var arregloParse: Array<String> = arrayOf()
         elementos.forEach { valor ->
             arregloParse = valor.split(",").toTypedArray()
-
-            //println("Imprimir arreglo separado de comas")
-            //arregloParse.forEach { v -> println(v) }
             farmacias.add(AtributosFar(
                     arregloParse[0].toInt(),
                     arregloParse[1],
@@ -159,19 +106,6 @@ class Farmacia {
                     )
             )
         }
-        //listaMutable.add(farmacias.toString())
-        //print(farmacias[0])
-        //print("Ahora va la lista mutable")
-        //print(listaMutable[1])
-        //print(farmacias[0].nombreFarmacia)
-        //println("\n")
-        //println(farmacias[1].compra)
-        /*farmacias.forEachIndexed { index, atributosFar ->
-            if (farmacias[index].nombreFarmacia.equals("medical2")){
-                println("***************************************************")
-                println(farmacias[index].compra)
-            }
-        }*/
 
         return farmacias
     }
@@ -209,12 +143,6 @@ class Farmacia {
 
     }
 
-  /*  farmacias.forEachIndexed { index, atributosFar ->
-        if (farmacias[index].nombreFarmacia.equals("medical2")){
-            println("***************************************************")
-            println(farmacias[index].compra)
-        }
-    }*/
 
     fun actualizarFarmacia(nombreABuscar: String){
         val elementos: List<String> = lectura()
@@ -292,69 +220,4 @@ class Farmacia {
         println("LOS CAMBIOS SE GUARDARON CON ÉXITO")
     } //Fin funcion eliminar
 
-
-
-   /* println("2. Direccion")
-    println("3. Cantidad de empleados")
-    println("4. Precio mínimo")
-    println("5. Horario de atención")
-    println("Ingrese el número del campo que desea actualizar: ")
-    val opcion = readLine()?.toInt()
-    when (opcion){
-        1 -> {
-            println("Ingrese el numero nombre de la farmacia: ")
-            val nombreFarmacia = readLine().toString()
-        }
-        2 -> {
-            print("Ingrese la dirección de la farmacia: ")
-            val direccionFarmacia = readLine().toString()
-        }
-        3 -> {
-            print("Ingrese el numero de trabajadores de la farmacia: ")
-            val numeroFarmacia = readLine()?.toInt()
-        }
-        4 -> {
-            print("¿Cuánto es la mínima cantidad de compra? -> ")
-            val compraFarmacia = readLine()?.toFloat()
-        }
-    } //fin when
-
-    */
-
-
-    // Esta funcion no va ******************************************************************
-    /*fun buscarFarmacia(nombreFarmacia: String = "todas"){
-        val arregloMuteable = mutableListOf<String>()
-        val archivo: File = File("archivos//farmacia.txt")
-        val ingreso = FileInputStream(archivo)
-        val datos = archivo.bufferedReader()
-        when (nombreFarmacia){
-            "todas" -> {
-                datos.useLines { itera -> itera.forEach { arregloMuteable.add(it) } }
-                var contador = 0
-                arregloMuteable.forEach { valorIteracion: String ->
-                    contador = contador + 1
-                    println("Farmacia $contador: "+ valorIteracion)
-                } //fin del foreach
-            } //fin de "todas"
-            else ->{
-                datos.useLines { itera -> itera.forEach { arregloMuteable.add(it) } }
-                arregloMuteable.forEach{ iteracion: ArrayList ->
-                    if (iteracion[1] == nombreFarmacia) {
-                        val respuesta = iteracion
-                        print(respuesta)
-                    }else{
-                        print("No existe la farmacia")
-                    }
-
-                }
-            }// fin else
-        } // fin when
-
-        //print(arregloMuteable)
-        //ingreso.bufferedWriter().use { out ->
-            //out.write("$datos")
-        //}
-
-    }*/
 }

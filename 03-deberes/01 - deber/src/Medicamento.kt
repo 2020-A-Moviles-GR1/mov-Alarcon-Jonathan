@@ -221,7 +221,7 @@ class Medicamento {
         val elementos: List<String> = lectura()
         val medicamento: ArrayList<AtributosMed> = obtenerMedicamento(elementos)
         medicamento.forEachIndexed { index, atributosFar ->
-            if (medicamento[index].nombreMedicamento.equals(nombreEliminar)){
+            if (medicamento[index].nombreMedicamento.equals(nombreEliminar) || medicamento[index].nombreFarmacia.equals(nombreEliminar) ){
                 //print(index)
                 indice = index
             } // fin IF
