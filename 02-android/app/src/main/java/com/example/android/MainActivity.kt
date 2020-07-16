@@ -17,6 +17,11 @@ class MainActivity : AppCompatActivity() {
                 //this.irCicloDeVida()
                 irCicloDeVida()
             }
+
+        btn_list_view
+            .setOnClickListener { boton ->
+                irListView()
+            }
     }
 
     //funcion para ir a una actividad diferente
@@ -29,7 +34,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intentExplicito) //metodo dentro de la clase
     }
 
-
+    fun irListView(){
+        val intentExplicito = Intent(
+            this,
+            BListViewActivity::class.java
+        )
+        //this.startActivity(intentExplicito)
+        startActivity(intentExplicito) //metodo dentro de la clase
+    }
 
 
 
