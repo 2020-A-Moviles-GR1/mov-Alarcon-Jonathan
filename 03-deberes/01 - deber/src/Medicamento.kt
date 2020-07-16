@@ -120,11 +120,11 @@ class Medicamento {
         return medicamento
     }
 
-    fun buscarMedicamento(nombreABuscar: String = "todas"){
+    fun buscarMedicamento(nombreABuscar: String = "todos"){
         val elementos: List<String> = lectura()
         var medicamento: ArrayList<AtributosMed> = obtenerMedicamento(elementos)
         var arreglo2: Array<String> = arrayOf()
-        if (nombreABuscar.equals("todas")){
+        if (nombreABuscar.equals("todos")){
             elementos.forEach { valor ->
                 arreglo2 = valor.split(",").toTypedArray()
                 medicamento.add(AtributosMed(
@@ -139,7 +139,7 @@ class Medicamento {
                 )
             }
             print(medicamento)
-        }else if(!nombreABuscar.equals("todas")) {
+        }else if(!nombreABuscar.equals("todos")) {
             elementos.forEach { valor ->
                 arreglo2 = valor.split(",").toTypedArray()
                 if (arreglo2[1].equals(nombreABuscar)) {
@@ -174,12 +174,12 @@ class Medicamento {
                         medicamento[index].precioMedicamento = readLine()?.toFloat()
                     }
                     2 -> {
-                        print("Ingrese el numero de trabajadores de la farmacia: ")
+                        print("Ingrese la fecha de expiración: ")
                         //val numeroFarmacia = readLine()?.toInt()
                         medicamento[index].fechaMedicamento = readLine().toString()
                     }
                     3 -> {
-                        print("¿Cuánto es la mínima cantidad de compra? -> ")
+                        print("Ingrese la cantidad nueva del medicamento -> ")
                         //val compraFarmacia = readLine()?.toFloat()
                         medicamento[index].unidadesMedicamento = readLine()?.toInt()
                     }
