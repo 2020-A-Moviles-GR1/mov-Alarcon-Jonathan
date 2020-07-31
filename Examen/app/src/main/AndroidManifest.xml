@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android">
+    package="com.example.examen">
 
     <application
         android:allowBackup="true"
@@ -9,16 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IntentEnviaParametros">
-            <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="text/plain"/>
-            </intent-filter>
-
-        </activity>
-        <activity android:name=".BListViewActivity" />
-        <activity android:name=".CicloVida" />
+        <activity android:name=".ActualizarMedicamentoActivity"></activity>
+        <activity android:name=".VerMedicamentoActivity" />
+        <activity android:name=".GestionarMedicamentoActivity" />
+        <activity android:name=".CrearMedicamentoActivity" />
+        <activity android:name=".ActualizarFarmaciaActivity" />
+        <activity android:name=".VerFarmaciaActivity" />
+        <activity android:name=".GestionFarmaciaActivity" />
+        <activity android:name=".CrearFarmaciaActivity" />
+        <activity android:name=".Farmacia_act" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

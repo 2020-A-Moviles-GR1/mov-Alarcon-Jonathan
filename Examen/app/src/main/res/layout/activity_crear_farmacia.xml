@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CrearFarmaciaActivity">
+
+    <EditText
+        android:id="@+id/txt_nombre"
+        android:layout_width="294dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="@string/txt_nombre"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <EditText
+        android:id="@+id/txt_direccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/txt_direccion"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nombre"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/txt_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombre" />
+
+    <EditText
+        android:id="@+id/txt_compra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/txt_compra"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/txt_trabajadores"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_trabajadores"
+        app:layout_constraintTop_toBottomOf="@+id/txt_trabajadores" />
+
+    <EditText
+        android:id="@+id/txt_atencion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/txt_atencion"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/txt_compra"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_compra"
+        app:layout_constraintTop_toBottomOf="@+id/txt_compra" />
+
+    <Button
+        android:id="@+id/btn_datosCrear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Crear Farmacia"
+        app:layout_constraintEnd_toEndOf="@+id/txt_atencion"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_atencion"
+        app:layout_constraintTop_toBottomOf="@+id/txt_atencion" />
+
+    <TextView
+        android:id="@+id/texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/btn_datosCrear"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="@+id/btn_datosCrear"
+        app:layout_constraintTop_toBottomOf="@+id/btn_datosCrear" />
+
+    <EditText
+        android:id="@+id/txt_trabajadores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/txt_trabajadores"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/txt_direccion"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_direccion"
+        app:layout_constraintTop_toBottomOf="@+id/txt_direccion" />
+</androidx.constraintlayout.widget.ConstraintLayout>

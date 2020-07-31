@@ -22,10 +22,11 @@
         android:layout_height="wrap_content"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.594" />
 
     <Button
         android:id="@+id/btn_ciclo_vida"
@@ -48,5 +49,25 @@
         app:layout_constraintStart_toEndOf="@+id/btn_ciclo_vida"
         app:layout_constraintTop_toTopOf="@+id/btn_ciclo_vida"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_inten_implicito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Intent Implicito"
+        app:layout_constraintEnd_toEndOf="@+id/btn_intent_respuesta"
+        app:layout_constraintStart_toStartOf="@+id/btn_intent_respuesta"
+        app:layout_constraintTop_toBottomOf="@+id/btn_intent_respuesta" />
+
+    <Button
+        android:id="@+id/btn_resp_propia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Resp Propia"
+        app:layout_constraintEnd_toEndOf="@+id/btn_inten_implicito"
+        app:layout_constraintStart_toStartOf="@+id/btn_inten_implicito"
+        app:layout_constraintTop_toBottomOf="@+id/btn_inten_implicito" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
