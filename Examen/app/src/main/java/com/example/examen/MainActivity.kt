@@ -11,12 +11,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn_farmacia.setOnClickListener { irFarmacia() }
+        btn_medicamento.setOnClickListener { irMedicamento() }
     }
 
     fun irFarmacia(){
         val intentExplicito = Intent(
             this,
             Farmacia_act :: class.java
+        )
+        startActivity(intentExplicito)
+    }
+
+    fun irMedicamento(){
+        val intentExplicito = Intent(
+            this,
+            GestionarMedicamentoActivity :: class.java
         )
         startActivity(intentExplicito)
     }

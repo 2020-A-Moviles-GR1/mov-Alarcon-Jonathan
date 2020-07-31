@@ -62,6 +62,8 @@ class GestionFarmaciaActivity : AppCompatActivity() {
         btn_caracteristicasFar.setOnClickListener { verFarmacia(posicion) }
         btn_eliminarFar.setOnClickListener { eliminarfarmacia(adaptador,posicion) }
         btn_actualizarFar.setOnClickListener { actualizarFarmacia(posicion) }
+        btn_crearMedicamento.setOnClickListener { irCrearMedicamento(posicion) }
+        btn_regresar.setOnClickListener { regresar() }
 
         /*
         val adaptador: ArrayAdapter<Entrenador> = ArrayAdapter(
@@ -126,6 +128,25 @@ class GestionFarmaciaActivity : AppCompatActivity() {
         lv_farmacia.adapter = adaptador*/
         //ServicioBDDMemoria.listaFarmacias = listaFarmacias1
         adaptador.notifyDataSetChanged()
+    }
+
+    fun irCrearMedicamento(posFar : Int){
+        //val nombreFarm = listaFarmacias1[posFar].nombreFarmacia
+        val intent = Intent(
+            this,
+            CrearMedicamentoActivity :: class.java
+        )
+        intent.putExtra("Nombre Far", listaFarmacias1[posFar].nombreFarmacia )
+        startActivity(intent)
+    }
+
+    fun regresar(){
+        val intent = Intent(
+            this,
+             MainActivity :: class.java
+        )
+
+        startActivity(intent)
     }
 
 

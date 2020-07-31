@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActualizarFarmaciaActivity"></activity>
+        <activity android:name=".ActualizarMedicamentoActivity"></activity>
+        <activity android:name=".VerMedicamentoActivity" />
+        <activity android:name=".GestionarMedicamentoActivity" />
+        <activity android:name=".CrearMedicamentoActivity" />
+        <activity android:name=".ActualizarFarmaciaActivity" />
         <activity android:name=".VerFarmaciaActivity" />
         <activity android:name=".GestionFarmaciaActivity" />
         <activity android:name=".CrearFarmaciaActivity" />
