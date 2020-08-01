@@ -20,7 +20,6 @@ class BListViewActivity : AppCompatActivity() {
         listaEntrenadores.add(Entrenador("Guillermo","Vargas"))
         listaEntrenadores.add(Entrenador("Raul","Alarcon"))
         listaEntrenadores.add(Entrenador("Jacqueline","Paillacho"))
-        Log.i("Lista","Esta es la lista: ${listaEntrenadores}")
 
         //adaptadores
         val adaptador: ArrayAdapter<Entrenador> = ArrayAdapter(

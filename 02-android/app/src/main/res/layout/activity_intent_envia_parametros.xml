@@ -15,26 +15,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_resp_aceptar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="ACEPTAR"
-        app:layout_constraintEnd_toEndOf="@+id/btn_devolver_respuesta"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/btn_devolver_respuesta"
-        app:layout_constraintTop_toBottomOf="@+id/btn_devolver_respuesta" />
-
-    <Button
-        android:id="@+id/btn_resp_cancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="CANCELAR"
-        app:layout_constraintEnd_toEndOf="@+id/btn_resp_aceptar"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_resp_aceptar"
-        app:layout_constraintTop_toBottomOf="@+id/btn_resp_aceptar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
