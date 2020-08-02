@@ -1,5 +1,6 @@
 package com.example.examen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -37,6 +38,7 @@ class CrearFarmaciaActivity : AppCompatActivity() {
         Log.i("Datos en Crear","La lista completa: ${listaFarmacias}")
 
         btn_datosCrear.setOnClickListener { obtenerDatos() }
+        btn_cancelar.setOnClickListener { irAtras() }
 
         //val nombreDato = txt_nombre.text.toString()
         //val direccionDato = txt_direccion.text.toString()
@@ -66,6 +68,14 @@ class CrearFarmaciaActivity : AppCompatActivity() {
         Log.i("datito","nombre ${compraDato}")
         Log.i("datito","nombre ${horarioDato}")
         Log.i("datito","nombre ${atencion}")
+    }
+
+    fun irAtras(){
+        val intentGestionar = Intent(
+            this,
+            Farmacia_act :: class.java
+        )
+        startActivity(intentGestionar)
     }
 
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E9C0CA25"
     tools:context=".GestionFarmaciaActivity">
 
     <ListView
@@ -14,14 +15,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <Button
         android:id="@+id/btn_caracteristicasFar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="Caracteristicas"
+        android:layout_marginTop="56dp"
+        android:text="Ver"
         app:layout_constraintEnd_toEndOf="@+id/lv_farmacia"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/lv_farmacia"
@@ -31,18 +32,18 @@
         android:id="@+id/btn_actualizarFar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:text="Actualizar"
         app:layout_constraintBottom_toBottomOf="@+id/btn_caracteristicasFar"
         app:layout_constraintStart_toEndOf="@+id/btn_caracteristicasFar"
         app:layout_constraintTop_toTopOf="@+id/btn_caracteristicasFar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_eliminarFar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="36dp"
         android:text="Eliminar"
         app:layout_constraintBottom_toBottomOf="@+id/btn_actualizarFar"
         app:layout_constraintStart_toEndOf="@+id/btn_actualizarFar"
@@ -64,7 +65,7 @@
         android:id="@+id/btn_regresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="76dp"
         android:text="Regresar"
         app:layout_constraintBottom_toBottomOf="@+id/btn_crearMedicamento"
         app:layout_constraintStart_toEndOf="@+id/btn_crearMedicamento"

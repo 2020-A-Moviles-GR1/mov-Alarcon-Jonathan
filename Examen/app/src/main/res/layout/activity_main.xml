@@ -8,25 +8,43 @@
 
     <Button
         android:id="@+id/btn_farmacia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        style="@android:style/Widget.Button"
+        android:layout_width="134dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#7FD813"
         android:text="Farmacia"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <Button
         android:id="@+id/btn_medicamento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        style="@android:style/Widget.Button"
+        android:layout_width="173dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="44dp"
+        android:backgroundTint="#4D791D"
         android:text="Medicamento"
-        app:layout_constraintEnd_toEndOf="@+id/btn_farmacia"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="@+id/btn_farmacia"
-        app:layout_constraintTop_toBottomOf="@+id/btn_farmacia" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_farmacia"
+        app:layout_constraintStart_toEndOf="@+id/btn_farmacia"
+        app:layout_constraintTop_toTopOf="@+id/btn_farmacia"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="413dp"
+        android:layout_height="503dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/segunda" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#7AFFB300"
     tools:context=".GestionarMedicamentoActivity">
 
     <ListView
         android:id="@+id/lv_medicamentos"
         android:layout_width="378dp"
-        android:layout_height="513dp"
+        android:layout_height="476dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.615"
@@ -27,13 +28,13 @@
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.827" />
+        app:layout_constraintVertical_bias="0.756" />
 
     <Button
         android:id="@+id/btn_actuaMedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="40dp"
         android:text="Actualizar"
         app:layout_constraintBottom_toBottomOf="@+id/btn_verMedi"
         app:layout_constraintStart_toEndOf="@+id/btn_verMedi"

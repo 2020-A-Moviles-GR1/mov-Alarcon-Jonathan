@@ -40,6 +40,7 @@ class GestionarMedicamentoActivity : AppCompatActivity() {
         btn_verMedi.setOnClickListener { verMedicamento(posicion) }
         btn_actuaMedi.setOnClickListener { actualizarMedi(posicion) }
         btn_elimMedi.setOnClickListener { eliminarMedicamento(adaptador,posicion) }
+        btn_atras.setOnClickListener { irAtras() }
 
     }
 
@@ -83,6 +84,14 @@ class GestionarMedicamentoActivity : AppCompatActivity() {
         listaMedi.removeAt(pos)
         adaptador.remove(mediBorrar)
         adaptador.notifyDataSetChanged()
+    }
+
+    fun irAtras(){
+        val intentAtras = Intent(
+            this,
+            MainActivity :: class.java
+        )
+        startActivity(intentAtras)
     }
 
 }

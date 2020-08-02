@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D1DF28"
     tools:context=".CrearFarmaciaActivity">
 
     <EditText
         android:id="@+id/txt_nombre"
-        android:layout_width="294dp"
-        android:layout_height="44dp"
+        android:layout_width="299dp"
+        android:layout_height="46dp"
         android:ems="10"
         android:hint="@string/txt_nombre"
         android:inputType="textPersonName"
@@ -22,21 +23,21 @@
 
     <EditText
         android:id="@+id/txt_direccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="299dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/txt_direccion"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/txt_nombre"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_nombre"
         app:layout_constraintTop_toBottomOf="@+id/txt_nombre" />
 
     <EditText
         android:id="@+id/txt_compra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="51dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/txt_compra"
@@ -48,8 +49,8 @@
 
     <EditText
         android:id="@+id/txt_atencion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="261dp"
+        android:layout_height="55dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/txt_atencion"
@@ -70,27 +71,27 @@
         app:layout_constraintStart_toStartOf="@+id/txt_atencion"
         app:layout_constraintTop_toBottomOf="@+id/txt_atencion" />
 
-    <TextView
-        android:id="@+id/texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/btn_datosCrear"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toStartOf="@+id/btn_datosCrear"
-        app:layout_constraintTop_toBottomOf="@+id/btn_datosCrear" />
-
     <EditText
         android:id="@+id/txt_trabajadores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="295dp"
+        android:layout_height="46dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="@string/txt_trabajadores"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/txt_direccion"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.321"
         app:layout_constraintStart_toStartOf="@+id/txt_direccion"
         app:layout_constraintTop_toBottomOf="@+id/txt_direccion" />
+
+    <Button
+        android:id="@+id/btn_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_datosCrear"
+        app:layout_constraintStart_toEndOf="@+id/btn_datosCrear"
+        app:layout_constraintTop_toTopOf="@+id/btn_datosCrear"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

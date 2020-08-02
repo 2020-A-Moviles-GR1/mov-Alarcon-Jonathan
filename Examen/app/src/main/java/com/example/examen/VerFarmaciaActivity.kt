@@ -1,5 +1,6 @@
 package com.example.examen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -34,8 +35,15 @@ class VerFarmaciaActivity : AppCompatActivity() {
         tv_compra.text = compra.toString()
         tv_atencion.text = atencion.toString()
 
+        btn_volver.setOnClickListener { volver() }
+    }
 
-
+    fun volver(){
+        val intentVolver = Intent(
+            this,
+            GestionFarmaciaActivity :: class.java
+        )
+        startActivity(intentVolver)
     }
 
 

@@ -14,6 +14,7 @@ class GestionFarmaciaActivity : AppCompatActivity() {
     val nombresFar = arrayListOf<String>()
     val eleccion = arrayListOf<FarmaciaAtributos>()
     var posicion = 0
+    var listaMedicamentos = arrayListOf<MedicamentoAtributos>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +22,7 @@ class GestionFarmaciaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_farmacia)
 
         listaFarmacias1 = ServicioBDDMemoria.listaFarmacias
+        listaMedicamentos = ServicioBDDMemoria.listaMedicamentos
         Log.i("Volver","La lista actualizacion es: ${listaFarmacias1}")
         //listaFarmacias1.add(FarmaciaAtributos(1,"Sana Sana","America",25,1.5f,true))
         //listaFarmacias1.add(FarmaciaAtributos(2,"Medicity","10 de Agosto",55,0.23f,false))
@@ -117,10 +119,21 @@ class GestionFarmaciaActivity : AppCompatActivity() {
 
 
         val nombreBorrar = listaFarmacias1[pos].nombreFarmacia.toString()
+        var contador = 0
+        for (e in listaMedicamentos){
+
+            if (listaFarmacias1[pos].nombreFarmacia.equals(e.nombreFarmacia)){
+                listaMedicamentos.removeAt(contador)
+            }
+            contador = contador + 1
+        }
+        Log.i("borrado","La lista de medicamentos es: ${listaMedicamentos}")
         Log.i("borrado","el nombre a borrar es: ${nombreBorrar}")
         listaFarmacias1.removeAt(pos)
         Log.i("borrado","la lista nueva es: ${listaFarmacias1}")
         adaptador.remove(nombreBorrar)
+
+
         /*for (e in listaFarmacias1){
             nombresFar.add(e.nombreFarmacia)
             Log.i("nombres","el nombre es: ${e.nombreFarmacia}")
