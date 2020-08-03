@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/segunda"
+    tools:context=".Farmacia_act">
+
+    <TextView
+        android:id="@+id/tv_Bienvenida"
+        android:layout_width="323dp"
+        android:layout_height="52dp"
+        android:text="BIENVENIDO AL MENÚ DE FARMACIA"
+        android:textColor="#F5140808"
+        android:textSize="18sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <Button
+        android:id="@+id/btn_crear"
+        style="@android:style/Widget.Button"
+        android:layout_width="176dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="140dp"
+        android:background="#68B11B"
+        android:text="Crear una Farmacia"
+        android:textColor="#0C0505"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Bienvenida"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="@+id/tv_Bienvenida"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Bienvenida" />
+
+    <Button
+        android:id="@+id/btn_buscar"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Gestionar Farmacias"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crear" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

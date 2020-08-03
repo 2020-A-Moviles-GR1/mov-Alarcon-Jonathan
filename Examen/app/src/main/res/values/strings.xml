@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Examen</string>
+    <string name="txt_nombre">Ingrese el nombre de la farmacia</string>
+    <string name="txt_direccion">Ingrese la direccion de la farmacia</string>
+    <string name="txt_trabajadores">Ingrese el numero de trabajadores</string>
+    <string name="txt_compra">Ingrese la compra mínima</string>
+    <string name="txt_atencion">¿Atención las 24  horas?</string>
+</resources>
