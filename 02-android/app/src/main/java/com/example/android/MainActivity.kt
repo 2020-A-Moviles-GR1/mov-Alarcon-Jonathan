@@ -8,6 +8,7 @@ import android.provider.ContactsContract
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_intent_envia_parametros.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -143,6 +144,18 @@ class MainActivity : AppCompatActivity() {
         intentExplicito.putExtra("numero3", 5)
         intentExplicito.putExtra("numero4", 6)
         intentExplicito.putExtra("numero5", 7)
+
+        //clase 06/08/2020
+        val jonathan = Usuario("Jonathan",24, Date(),400.00)
+
+        val picachu = Mascota("Picachu", jonathan)
+
+        val arregloMascotas = arrayListOf<Mascota>(picachu)
+
+        intentExplicito.putExtra("picachu", picachu)
+        intentExplicito.putExtra("arregloMascotas", arregloMascotas)
+
+
         startActivity(intentExplicito)
 
     }

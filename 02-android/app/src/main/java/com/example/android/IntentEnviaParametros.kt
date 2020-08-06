@@ -41,6 +41,31 @@ class IntentEnviaParametros : AppCompatActivity() {
         }
 
 
+        //clase 06/08/2020
+
+        val picachu = intent.getParcelableExtra<Mascota>("picachu")
+        if(picachu != null){
+            Log.i("parcelable", "${picachu.nombre} ${picachu.duenio?.nombre}")
+        }
+
+        val arregloMascota = intent.getParcelableArrayListExtra<Mascota>("arregloMascotas")
+        if(arregloMascota != null){
+            /*arregloMascota.forEach(
+                Log.i("parcelable", "EN ARREGLO")
+                        //Log.i("parcelable", "${picachu.nombre} ${picachu.duenio?.nombre}")
+
+            )*/
+            arregloMascota.forEach {
+                if(it != null){
+                    Log.i("parcelable", "EN ARREGLO")
+                    Log.i("parcelable", "${it.nombre} ${it.duenio?.nombre}")
+                }
+
+            }
+        }
+
+
+
         //¿Como volver a la pantalla anterior
 
         btn_devolver_respuesta.setOnClickListener {
