@@ -40,6 +40,18 @@ class MainActivity : AppCompatActivity() {
             enviarIntenConRespuestaPropia()
         }
 
+        btn_http.setOnClickListener {
+            irHTTP()
+        }
+
+    }
+
+    fun irHTTP(){
+        val intent = Intent(
+            this,
+            HttpActivity :: class.java
+        )
+        startActivity(intent)
     }
 
 
@@ -159,6 +171,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(intentExplicito)
 
     }
+
+    //clase 24/08/2020
+
+
 
 
 
