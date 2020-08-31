@@ -1,18 +1,13 @@
 package com.example.android
 
 import java.util.*
-import kotlin.collections.ArrayList
 
-class UsuarioHttp(
+class PokemonHttp (
+    val createdAt: Long,
+    val updatedAt: Long,
     var id: Int,
-    var createdAt: Long,
-    var updatedAt: Long,
-    var cedula: String,
     var nombre: String,
-    var correo: String,
-    var estadoCivil: String,
-    var password: String,
-    var pokemons: ArrayList<PokemonHttp>
+    var usuario: Int
 ) {
 
     var fechaCreacion : Date
@@ -22,5 +17,4 @@ class UsuarioHttp(
         fechaCreacion = Date(createdAt)
         fechaActualizacion = Date(updatedAt)
     }
-
 }
