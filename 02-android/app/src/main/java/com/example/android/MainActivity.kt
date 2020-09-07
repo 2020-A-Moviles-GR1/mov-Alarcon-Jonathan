@@ -44,7 +44,32 @@ class MainActivity : AppCompatActivity() {
             irHTTP()
         }
 
+        btn_recycler.setOnClickListener {
+            abrirRecyclerViewActivity()
+        }
+
+        btn_mapa.setOnClickListener {
+            abrirMapaActivity()
+        }
+
     }
+
+    fun abrirMapaActivity(){
+        val intentExplicito = Intent(
+            this,
+            MapsActivity::class.java
+        )
+        startActivity(intentExplicito)
+    }
+
+    fun abrirRecyclerViewActivity(){
+        val intentExplicito = Intent(
+            this,
+            RecyclerViewActivity::class.java
+        )
+        startActivity(intentExplicito)
+    }
+
 
     fun irHTTP(){
         val intent = Intent(

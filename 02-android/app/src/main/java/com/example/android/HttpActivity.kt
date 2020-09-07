@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.beust.klaxon.Klaxon
 import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.httpPost
 import kotlinx.android.synthetic.main.activity_http.*
 import com.github.kittinunf.result.Result
 
@@ -19,7 +20,40 @@ class HttpActivity : AppCompatActivity() {
         btn_obtener.setOnClickListener {
             obtenerUsuarios()
         }
+
+        btn_crear.setOnClickListener {
+            crearUsuario()
+        }
     }
+
+    fun crearUsuario(){
+        val url = urlPrincipal + "/Usuario"
+        // Esta es una lista de clave valor
+
+        val parametrosUsuario = listOf(
+            "cedula" to "12345678910",
+            "nombre" to "Pepito",
+            "correo" to "hola51@epn.edu.com",
+            "estadoCivil" to "Casado",
+            "password" to "Pass123456"
+        )
+
+        url.httpPost(parametrosUsuario)
+            .responseString{ req, res, result ->
+                when(result){
+                    is Result.Failure -> {
+                        val error = result.getException()
+                        Log.i("http-klaxon", "Error: ${error}")
+                    }
+                    is Result.Success -> {
+                        val usuarioString = result.get()
+                        Log.i("http-klaxon1", "${usuarioString}")
+                    }
+                }
+            }
+    }
+
+
 
     fun obtenerUsuarios(){
 
@@ -51,6 +85,7 @@ class HttpActivity : AppCompatActivity() {
                     is Result.Success -> {
                         val data = result.get()
                         Log.i("http-klaxon", "Data: ${data}")
+                        Log.i("http-klaxon", "Data: ${pokemonInstanciado}")
 
                         val usuarios = Klaxon().parseArray<UsuarioHttp>(data)
                         if(usuarios != null){
@@ -65,8 +100,6 @@ class HttpActivity : AppCompatActivity() {
 
                         }
 
-
-
                     }
                     is Result.Failure -> {
                         val ex = result.getException()
@@ -75,4 +108,7 @@ class HttpActivity : AppCompatActivity() {
                 }
             }
     }
+
+
+
 }

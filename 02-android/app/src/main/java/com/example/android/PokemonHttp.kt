@@ -7,7 +7,8 @@ class PokemonHttp (
     val updatedAt: Long,
     var id: Int,
     var nombre: String,
-    var usuario: Int
+    var usuario: Int,
+    var usuarios: ArrayList<UsuarioHttp>
 ) {
 
     var fechaCreacion : Date
