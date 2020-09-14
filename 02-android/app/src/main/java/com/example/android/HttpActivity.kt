@@ -11,7 +11,7 @@ import com.github.kittinunf.result.Result
 
 class HttpActivity : AppCompatActivity() {
 
-    val urlPrincipal = "http://192.168.1.109:1337"
+    val urlPrincipal = "http://192.168.1.114:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,11 +91,11 @@ class HttpActivity : AppCompatActivity() {
                         if(usuarios != null){
                             usuarios.forEach {
                                 Log.i("http-klaxon1", "Nombre: ${it.nombre}" + " Correo: ${it.correo}")
-                                if(it.pokemons.size > 0){
+                                /*if(it.pokemons.size > 0){
                                     it.pokemons.forEach {
                                         Log.i("http-klaxon1", "Nombre: ${it.nombre}")
                                     }
-                                }
+                                }*/
                             }
 
                         }
@@ -107,6 +107,34 @@ class HttpActivity : AppCompatActivity() {
                     }
                 }
             }
+
+
+        val urlSecundaria = urlPrincipal + "/pokemon"
+        urlSecundaria.httpGet().responseString { request, response, result ->
+            when (result) {
+                is Result.Success -> {
+                    val data2 = result.get()
+                    val pokemons = Klaxon().converter(PokemonHttp.myConverter)
+                        .parseArray<PokemonHttp>(data2)
+                    if (pokemons!!.size != 0) {
+                        pokemons!!.forEach {
+                            Log.i("http-klaxon", "USUARIO:${it.usuario.toString()}")
+                            println(it.usuario?.javaClass?.getSimpleName())
+
+
+                        }
+                    }
+                }
+                is Result.Failure -> {
+                    val ex = result.getException()
+                    Log.i("http_klaxon", "error:${ex.message}")
+                }
+
+            }
+        }
+
+
+
     }
 
 
