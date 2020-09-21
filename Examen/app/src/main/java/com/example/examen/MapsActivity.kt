@@ -11,6 +11,8 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -23,6 +25,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_maps)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         solicitarPermisos()
+        //farmaciasDefecto()
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -42,6 +45,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         establecerConfiguraciones(mMap)
+        farmaciasDefecto()
 
         val direccion = LatLng(-0.208511, -78.496020)
         val puntoUsuario = LatLng(-0.208511, -78.496020)
@@ -68,6 +72,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(
             MarkerOptions().position(latLng).title(title)
         )
+    }
+
+    fun farmaciasDefecto(){
+        val direccion1 = LatLng(-0.207248, -78.496822)
+        val titulo1 = "Fybeca"
+        //anadirMarcador(direccion1, titulo1)
+        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.fybeca)).position(direccion1).title(titulo1))
+        val direccion2 = LatLng(-0.207197, -78.495733)
+        val titulo2 = "Medicity"
+        anadirMarcador(direccion2, titulo2)
+        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.medicity)).position(direccion2).title(titulo2))
+        val direccion3 = LatLng(-0.207876, -78.494529)
+        val titulo3 = "GreenFarm"
+        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.greenfarm)).position(direccion3).title(titulo3))
+        val direccion4 = LatLng(-0.209418, -78.494870)
+        val titulo4 = "Farm-Labs"
+        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.farmlabs)).position(direccion4).title(titulo4))
+        val direccion5 = LatLng(-0.209303, -78.496168)
+        val titulo5 = "FarmaCare"
+        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.farmacare)).position(direccion5).title(titulo5))
     }
 
     fun establecerConfiguraciones(mapa: GoogleMap){

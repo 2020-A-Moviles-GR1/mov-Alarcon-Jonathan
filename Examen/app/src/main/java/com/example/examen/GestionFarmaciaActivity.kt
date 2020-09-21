@@ -66,6 +66,7 @@ class GestionFarmaciaActivity : AppCompatActivity() {
         btn_actualizarFar.setOnClickListener { actualizarFarmacia(posicion) }
         btn_crearMedicamento.setOnClickListener { irCrearMedicamento(posicion) }
         btn_regresar.setOnClickListener { regresar() }
+        btn_ubicacion.setOnClickListener { abrirMapaActivity() }
 
         /*
         val adaptador: ArrayAdapter<Entrenador> = ArrayAdapter(
@@ -80,6 +81,14 @@ class GestionFarmaciaActivity : AppCompatActivity() {
             }
          */
 
+    }
+
+    fun abrirMapaActivity(){
+        val intent = Intent(
+            this,
+            MapsActivity::class.java
+        )
+        startActivity(intent)
     }
 
     fun verFarmacia(pos:Int){
