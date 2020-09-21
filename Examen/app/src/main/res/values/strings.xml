@@ -5,4 +5,5 @@
     <string name="txt_trabajadores">Ingrese el numero de trabajadores</string>
     <string name="txt_compra">Ingrese la compra mínima</string>
     <string name="txt_atencion">¿Atención las 24  horas?</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

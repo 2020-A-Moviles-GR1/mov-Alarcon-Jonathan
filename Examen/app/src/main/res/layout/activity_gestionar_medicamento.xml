@@ -63,4 +63,15 @@
         app:layout_constraintStart_toStartOf="@+id/btn_elimMedi"
         app:layout_constraintTop_toBottomOf="@+id/btn_elimMedi" />
 
+    <Button
+        android:id="@+id/btn_mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="Ubicacion medicamentos"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_atras"
+        app:layout_constraintEnd_toStartOf="@+id/btn_atras"
+        app:layout_constraintTop_toTopOf="@+id/btn_atras"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

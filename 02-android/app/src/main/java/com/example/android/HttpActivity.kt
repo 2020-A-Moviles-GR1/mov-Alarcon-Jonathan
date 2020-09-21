@@ -11,7 +11,7 @@ import com.github.kittinunf.result.Result
 
 class HttpActivity : AppCompatActivity() {
 
-    val urlPrincipal = "http://192.168.1.114:1337"
+    val urlPrincipal = "http://192.168.1.180:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

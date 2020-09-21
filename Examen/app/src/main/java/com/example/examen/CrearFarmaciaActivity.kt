@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.result.Result
 import kotlinx.android.synthetic.main.activity_crear_farmacia.*
 
 class CrearFarmaciaActivity : AppCompatActivity() {
@@ -18,9 +20,8 @@ class CrearFarmaciaActivity : AppCompatActivity() {
     //lateinit var nombre : EditText
     //lateinit var botonCrear : Button
     //lateinit var vista : TextView
-
+    val urlPrincipal = "http://192.168.1.62:1337"
     var contador = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_farmacia)
@@ -51,6 +52,7 @@ class CrearFarmaciaActivity : AppCompatActivity() {
     }
 
     fun obtenerDatos(){
+        val url = urlPrincipal + "/farmacia"
         contador = contador + 1
         var atencion = true
         val nombreDato = txt_nombre.text.toString()
@@ -68,6 +70,28 @@ class CrearFarmaciaActivity : AppCompatActivity() {
         Log.i("datito","nombre ${compraDato}")
         Log.i("datito","nombre ${horarioDato}")
         Log.i("datito","nombre ${atencion}")
+
+        val parametrosFarmacia = listOf(
+            "nombreFarmacia" to nombreDato,
+            "direccionFarmacia" to direccionDato,
+            "numeroTrabajadores" to trabajadoresDatos,
+            "compra" to compraDato,
+            "atencion" to atencion
+        )
+
+        url.httpPost(parametrosFarmacia)
+            .responseString { req, res, result ->
+                when(result){
+                    is Result.Failure -> {
+                        val error = result.getException()
+                        Log.i("http-klaxon", "Error: ${error}")
+                    }
+                    is com.github.kittinunf.result.Result.Success -> {
+                        val farmaciaString = result.get()
+                        Log.i("http-klaxon1", "${farmaciaString}")
+                    }
+                }
+            }
     }
 
     fun irAtras(){

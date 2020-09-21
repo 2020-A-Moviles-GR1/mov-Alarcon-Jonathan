@@ -41,7 +41,16 @@ class GestionarMedicamentoActivity : AppCompatActivity() {
         btn_actuaMedi.setOnClickListener { actualizarMedi(posicion) }
         btn_elimMedi.setOnClickListener { eliminarMedicamento(adaptador,posicion) }
         btn_atras.setOnClickListener { irAtras() }
+        btn_mapa.setOnClickListener { abrirMapaActivity() }
 
+    }
+
+    fun abrirMapaActivity(){
+        val intent = Intent(
+            this,
+            MapsActivity::class.java
+        )
+        startActivity(intent)
     }
 
     fun verMedicamento(pos : Int){
