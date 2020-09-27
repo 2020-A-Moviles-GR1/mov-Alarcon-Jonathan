@@ -1,6 +1,8 @@
 package com.example.examen
 
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,12 +22,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     var tienePermisos = false
+    var nombresFar = arrayListOf<String>()
+    var listaFarmacias1 = arrayListOf<FarmaciaAtributos>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         solicitarPermisos()
         //farmaciasDefecto()
+        //val nombreFarmacia = intent.getStringExtra("Nombre")
+        //Log.i("Nombre: ", nombreFarmacia)
+        listaFarmacias1 = ServicioBDDMemoria.listaFarmacias
+        for (e in listaFarmacias1){
+            nombresFar.add(e.nombreFarmacia)
+            Log.i("nombres","el nombre es tal: ${e.nombreFarmacia}")
+        }
+
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -56,6 +69,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
 
+
         // Add a marker in Sydney and move the camera
         //val sydney = LatLng(-0.208511, -78.496020)
         //mMap.addMarker(MarkerOptions().position(sydney).title("Marcador Patria"))
@@ -75,23 +89,72 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun farmaciasDefecto(){
-        val direccion1 = LatLng(-0.207248, -78.496822)
-        val titulo1 = "Fybeca"
-        //anadirMarcador(direccion1, titulo1)
-        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.fybeca)).position(direccion1).title(titulo1))
-        val direccion2 = LatLng(-0.207197, -78.495733)
-        val titulo2 = "Medicity"
-        anadirMarcador(direccion2, titulo2)
-        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.medicity)).position(direccion2).title(titulo2))
-        val direccion3 = LatLng(-0.207876, -78.494529)
-        val titulo3 = "GreenFarm"
-        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.greenfarm)).position(direccion3).title(titulo3))
-        val direccion4 = LatLng(-0.209418, -78.494870)
-        val titulo4 = "Farm-Labs"
-        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.farmlabs)).position(direccion4).title(titulo4))
-        val direccion5 = LatLng(-0.209303, -78.496168)
-        val titulo5 = "FarmaCare"
-        mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.farmacare)).position(direccion5).title(titulo5))
+
+        for (e in nombresFar){
+            if (e.equals("Farm-Labs")){
+                val direccion4 = LatLng(-0.209418, -78.494870)
+                val titulo4 = "Farm-Labs"
+                mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.farmlabs)).position(direccion4).title(titulo4))
+                mMap.setOnMarkerClickListener ( GoogleMap.OnMarkerClickListener{
+                    val uri = Uri.parse("https://www.farmlab.ie/")
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                    true
+                } )
+            }
+
+            if (e.equals("Fybeca")){
+                val direccion1 = LatLng(-0.207248, -78.496822)
+                val titulo1 = "Fybeca"
+
+                //anadirMarcador(direccion1, titulo1)
+                mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.fybeca)).position(direccion1).title(titulo1))
+                mMap.setOnMarkerClickListener ( GoogleMap.OnMarkerClickListener{
+                    val uri = Uri.parse("https://www.fybeca.com/FybecaWeb/pages/home.jsf")
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                    true
+                } )
+            }
+
+            if(e.equals("Medicity")){
+                val direccion2 = LatLng(-0.207197, -78.495733)
+                val titulo2 = "Medicity"
+                anadirMarcador(direccion2, titulo2)
+                mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.medicity)).position(direccion2).title(titulo2))
+                mMap.setOnMarkerClickListener ( GoogleMap.OnMarkerClickListener{
+                    val uri = Uri.parse("https://www.farmaciasmedicity.com/")
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                    true
+                } )
+            }
+
+            if(e.equals("GreenFarm")){
+                val direccion3 = LatLng(-0.207876, -78.494529)
+                val titulo3 = "GreenFarm"
+                mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.greenfarm)).position(direccion3).title(titulo3))
+                mMap.setOnMarkerClickListener ( GoogleMap.OnMarkerClickListener{
+                    val uri = Uri.parse("https://www.greenfarm.technology/about-2/")
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                    true
+                } )
+            }
+
+            if(e.equals("Pharma Care")){
+                val direccion5 = LatLng(-0.209303, -78.496168)
+                val titulo5 = "Pharma Care"
+                mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.farmacare)).position(direccion5).title(titulo5))
+                mMap.setOnMarkerClickListener ( GoogleMap.OnMarkerClickListener{
+                    val uri = Uri.parse("https://infricomedcare.com/pharma-care/")
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                    true
+                } )
+            }
+        }
+
     }
 
     fun establecerConfiguraciones(mapa: GoogleMap){

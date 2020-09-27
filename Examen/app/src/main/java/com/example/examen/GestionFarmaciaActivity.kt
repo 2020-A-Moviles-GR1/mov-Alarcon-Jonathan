@@ -88,6 +88,7 @@ class GestionFarmaciaActivity : AppCompatActivity() {
             this,
             MapsActivity::class.java
         )
+        intent.putStringArrayListExtra("Farmacias", nombresFar)
         startActivity(intent)
     }
 

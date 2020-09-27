@@ -92,6 +92,13 @@ class CrearFarmaciaActivity : AppCompatActivity() {
                     }
                 }
             }
+
+        /*val intentExplicito = Intent(
+            this,
+            MapsActivity::class.java
+        )
+        intentExplicito.putExtra("Nombre",nombreDato)*/
+
     }
 
     fun irAtras(){
