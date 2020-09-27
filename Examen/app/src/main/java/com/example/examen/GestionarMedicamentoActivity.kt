@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.github.kittinunf.fuel.httpDelete
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.result.Result
 import kotlinx.android.synthetic.main.activity_gestionar_medicamento.*
 
 class GestionarMedicamentoActivity : AppCompatActivity() {
@@ -13,6 +16,7 @@ class GestionarMedicamentoActivity : AppCompatActivity() {
     var listaMedi = arrayListOf<MedicamentoAtributos>()
     var nombresMed = arrayListOf<String>()
     var posicion = 0
+    val urlPrincipal = "http://192.168.1.105:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,10 +93,26 @@ class GestionarMedicamentoActivity : AppCompatActivity() {
 
     fun eliminarMedicamento(adaptador:ArrayAdapter<String>,pos: Int){
 
+        val url = urlPrincipal + "/medicamento" + pos
         val mediBorrar = listaMedi[pos].nombreMedicamento.toString()
         listaMedi.removeAt(pos)
         adaptador.remove(mediBorrar)
         adaptador.notifyDataSetChanged()
+
+        url.httpDelete()
+            .responseString { req, res, result ->
+                when(result){
+                    is Result.Failure -> {
+                        val error = result.getException()
+                        Log.i("http-klaxon", "Error: ${error}")
+                    }
+                    is com.github.kittinunf.result.Result.Success -> {
+                        val medicamentoString = result.get()
+                        Log.i("http-klaxon1", "${medicamentoString}")
+                    }
+                }
+            }
+
     }
 
     fun irAtras(){

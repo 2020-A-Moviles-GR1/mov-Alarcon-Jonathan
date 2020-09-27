@@ -20,7 +20,7 @@ class CrearFarmaciaActivity : AppCompatActivity() {
     //lateinit var nombre : EditText
     //lateinit var botonCrear : Button
     //lateinit var vista : TextView
-    val urlPrincipal = "http://192.168.1.62:1337"
+    val urlPrincipal = "http://192.168.1.105:1337"
     var contador = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

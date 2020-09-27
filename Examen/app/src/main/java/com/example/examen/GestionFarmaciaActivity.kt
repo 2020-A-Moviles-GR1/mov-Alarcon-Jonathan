@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.github.kittinunf.fuel.httpDelete
+import com.github.kittinunf.result.Result
 import kotlinx.android.synthetic.main.activity_buscar_farmacia.*
 
 class GestionFarmaciaActivity : AppCompatActivity() {
@@ -15,7 +17,7 @@ class GestionFarmaciaActivity : AppCompatActivity() {
     val eleccion = arrayListOf<FarmaciaAtributos>()
     var posicion = 0
     var listaMedicamentos = arrayListOf<MedicamentoAtributos>()
-
+    val urlPrincipal = "http://192.168.1.105:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,7 +129,7 @@ class GestionFarmaciaActivity : AppCompatActivity() {
 
     fun eliminarfarmacia(adaptador:ArrayAdapter<String>,pos: Int){
 
-
+        val url = urlPrincipal + "/farmacia" + pos
         val nombreBorrar = listaFarmacias1[pos].nombreFarmacia.toString()
         var contador = 0
         for (e in listaMedicamentos){
@@ -143,6 +145,19 @@ class GestionFarmaciaActivity : AppCompatActivity() {
         Log.i("borrado","la lista nueva es: ${listaFarmacias1}")
         adaptador.remove(nombreBorrar)
 
+        url.httpDelete()
+            .responseString { request, response, result ->
+                when (result) {
+                    is Result.Failure->{
+                        val error = result.getException()
+                        Log.i("http-klaxon", "Nombre: ${error}")
+                    }
+                    is Result.Success->{
+                        val farmaciaString = result.get()
+                        Log.i("http-klaxon1", "${farmaciaString}")
+                    }
+                }
+            }
 
         /*for (e in listaFarmacias1){
             nombresFar.add(e.nombreFarmacia)

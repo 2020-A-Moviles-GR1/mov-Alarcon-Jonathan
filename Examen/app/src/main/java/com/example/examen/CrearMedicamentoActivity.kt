@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_crear_medicamento.*
 
 class CrearMedicamentoActivity : AppCompatActivity() {
 
-    val urlPrincipal = "http://192.168.1.62:1337"
+    val urlPrincipal = "http://192.168.1.105:1337"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_medicamento)
@@ -39,6 +39,7 @@ class CrearMedicamentoActivity : AppCompatActivity() {
         }
 
         ServicioBDDMemoria.agregarMedicamento(2,nombreFarm,nombreMed,precioMed,fechaMed,unidadesMed,uso)
+
         val parametrosMedicamento = listOf(
             "nombreFarmacia" to nombreFarm,
             "nombreMedicamento" to nombreMed,

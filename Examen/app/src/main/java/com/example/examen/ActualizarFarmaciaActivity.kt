@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.fuel.httpPut
+import com.github.kittinunf.result.Result
 import kotlinx.android.synthetic.main.activity_actualizar_farmacia.*
 
 class ActualizarFarmaciaActivity : AppCompatActivity() {
 
     var listaFarmacias1 = arrayListOf<FarmaciaAtributos>()
+    val urlPrincipal = "http://192.168.1.105:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +52,7 @@ class ActualizarFarmaciaActivity : AppCompatActivity() {
     }
 
     fun obtenerDatosNuevos(posicionActua:Int){
+        val url = urlPrincipal + "/farmacia" + posicionActua
         var nombreActua = ""
         var direccionActua = ""
         var trabajadoresActua : Int
@@ -106,6 +111,29 @@ class ActualizarFarmaciaActivity : AppCompatActivity() {
         listaFarmacias1[posicionActua].numeroTrabajadores = trabajadoresActua
         listaFarmacias1[posicionActua].compra = compraActua
         listaFarmacias1[posicionActua].atencion = atencionActua1
+
+        val parametrosFarmacia = listOf(
+            "nombreFarmacia" to nombreActua,
+            "direccionFarmacia" to direccionActua,
+            "numeroTrabajadores" to trabajadoresActua,
+            "compra" to compraActua,
+            "atencion" to atencionActua1
+        )
+
+
+        url.httpPut(parametrosFarmacia)
+            .responseString { request, response, result ->
+                when (result) {
+                    is Result.Failure -> {
+                        val error = result.getException()
+                        Log.i("http-klaxon", "Nombre: ${error}")
+                    }
+                    is Result.Success -> {
+                        val farmaciaString = result.get()
+                        Log.i("http-klaxon1", "Nombre: ${farmaciaString}")
+                    }
+                }
+            }
 
         Log.i("actualizacion","La direccion es: ${listaFarmacias1}")
         val intentActua = Intent(

@@ -4,14 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.result.Result
 import kotlinx.android.synthetic.main.activity_ver_farmacia.*
 
 class VerFarmaciaActivity : AppCompatActivity() {
 
+    val urlPrincipal = "http://192.168.1.105:1337"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_farmacia)
 
+        val url = urlPrincipal + "/farmacia"
         val nombre = intent.getStringExtra("Nombre Farmacia")
         val direccion = intent.getStringExtra("Direccion Farmacia")
         val trabajadores = intent.getIntExtra("Num Trabajadores", 0)
@@ -35,7 +39,23 @@ class VerFarmaciaActivity : AppCompatActivity() {
         tv_compra.text = compra.toString()
         tv_atencion.text = atencion.toString()
 
+        url.httpGet()
+            .responseString { request, response, result ->
+                when (result) {
+                    is Result.Failure -> {
+                        val error = result.getException()
+                        Log.i("http-klaxon", "Nombre: ${error}")
+                    }
+                    is Result.Success -> {
+                        val farmaciaString = result.get()
+                        Log.i("http-klaxon1", "Nombre: ${farmaciaString}")
+                    }
+                }
+            }
+
         btn_volver.setOnClickListener { volver() }
+
+
     }
 
     fun volver(){

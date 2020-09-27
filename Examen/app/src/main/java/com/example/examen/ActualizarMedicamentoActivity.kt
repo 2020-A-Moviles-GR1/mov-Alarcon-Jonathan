@@ -3,11 +3,15 @@ package com.example.examen
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.github.kittinunf.fuel.httpPut
+import com.github.kittinunf.result.Result
 import kotlinx.android.synthetic.main.activity_actualizar_medicamento.*
 
 class ActualizarMedicamentoActivity : AppCompatActivity() {
 
     var listaMedica = arrayListOf<MedicamentoAtributos>()
+    val urlPrincipal = "http://192.168.1.105:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,7 @@ class ActualizarMedicamentoActivity : AppCompatActivity() {
     }
 
     fun obtenerMedActualizacion(posicion : Int){
+        val url = urlPrincipal + "/medicamento" + posicion
         var nombreFarAct : String
         var nombreMedAct : String
         var precioAct : Float
@@ -93,6 +98,29 @@ class ActualizarMedicamentoActivity : AppCompatActivity() {
         listaMedica[posicion].fechaMedicamento = fechaAct
         listaMedica[posicion].unidadesMedicamento = unidadesAct
         listaMedica[posicion].prevencion = aptoAct
+
+        val parametrosMedicamento = listOf(
+            "nombreFarmacia" to nombreFarAct,
+            "nombreMedicamento" to nombreMedAct,
+            "precioMedicamento" to precioAct,
+            "fechaMedicamento" to fechaAct,
+            "unidadesMedicamento" to unidadesAct,
+            "prevencion" to aptoAct
+        )
+
+        url.httpPut(parametrosMedicamento)
+            .responseString { request, response, result ->
+                when (result) {
+                    is Result.Failure -> {
+                        val error = result.getException()
+                        Log.i("http-klaxon", "Nombre: ${error}")
+                    }
+                    is Result.Success -> {
+                        val medicamentoString = result.get()
+                        Log.i("http-klaxon1", "${medicamentoString}")
+                    }
+                }
+            }
 
         val intentActuali = Intent(
             this,
