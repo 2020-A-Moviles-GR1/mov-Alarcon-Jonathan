@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_actualizar_farmacia.*
 class ActualizarFarmaciaActivity : AppCompatActivity() {
 
     var listaFarmacias1 = arrayListOf<FarmaciaAtributos>()
-    val urlPrincipal = "http://192.168.1.105:1337"
+    val urlPrincipal = "http://192.168.1.106:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,9 @@ class ActualizarFarmaciaActivity : AppCompatActivity() {
     }
 
     fun obtenerDatosNuevos(posicionActua:Int){
-        val url = urlPrincipal + "/farmacia" + posicionActua
+        val posNueva = posicionActua + 8
+        val url = urlPrincipal + "/farmacia" + "/" + posNueva
+        Log.i("url", url)
         var nombreActua = ""
         var direccionActua = ""
         var trabajadoresActua : Int
@@ -112,14 +114,19 @@ class ActualizarFarmaciaActivity : AppCompatActivity() {
         listaFarmacias1[posicionActua].compra = compraActua
         listaFarmacias1[posicionActua].atencion = atencionActua1
 
-        val parametrosFarmacia = listOf(
+        /*val parametrosFarmacia = listOf(
             "nombreFarmacia" to nombreActua,
             "direccionFarmacia" to direccionActua,
             "numeroTrabajadores" to trabajadoresActua,
             "compra" to compraActua,
             "atencion" to atencionActua1
-        )
+        )*/
 
+        val parametrosFarmacia = listOf(
+
+            "numeroTrabajadores" to trabajadoresActua
+
+        )
 
         url.httpPut(parametrosFarmacia)
             .responseString { request, response, result ->
@@ -130,7 +137,7 @@ class ActualizarFarmaciaActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         val farmaciaString = result.get()
-                        Log.i("http-klaxon1", "Nombre: ${farmaciaString}")
+                        Log.i("http-klaxon2", "Nombre: ${farmaciaString}")
                     }
                 }
             }

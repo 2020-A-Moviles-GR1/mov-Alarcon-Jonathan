@@ -17,7 +17,7 @@ class GestionFarmaciaActivity : AppCompatActivity() {
     val eleccion = arrayListOf<FarmaciaAtributos>()
     var posicion = 0
     var listaMedicamentos = arrayListOf<MedicamentoAtributos>()
-    val urlPrincipal = "http://192.168.1.105:1337"
+    val urlPrincipal = "http://192.168.1.106:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
