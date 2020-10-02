@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_actualizar_farmacia.*
 class ActualizarFarmaciaActivity : AppCompatActivity() {
 
     var listaFarmacias1 = arrayListOf<FarmaciaAtributos>()
-    val urlPrincipal = "http://192.168.1.106:1337"
+    val urlPrincipal = "http://192.168.1.105:1337"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class ActualizarFarmaciaActivity : AppCompatActivity() {
     }
 
     fun obtenerDatosNuevos(posicionActua:Int){
-        val posNueva = posicionActua + 8
+        val posNueva = posicionActua + 12
         val url = urlPrincipal + "/farmacia" + "/" + posNueva
         Log.i("url", url)
         var nombreActua = ""
